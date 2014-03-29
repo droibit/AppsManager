@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.droibit.appsmanager.view.CheckedRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingTop="@dimen/list_item_padding_top" >
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="@dimen/grid_item_icon_size"
+        android:layout_height="@dimen/grid_item_icon_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/app_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/app_icon"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/app_icon"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="false" />
+
+    <TextView
+        android:id="@+id/app_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/app_icon"
+        android:layout_alignLeft="@id/app_label"
+        android:layout_below="@id/app_label"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/listview_item_option"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textIsSelectable="false" />
+
+    <TextView
+        android:id="@+id/app_last_updatetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/app_size"
+        android:layout_alignBottom="@id/app_size"
+        android:layout_alignParentRight="true"
+        android:paddingRight="5dp"
+        android:singleLine="true"
+        android:textColor="@color/listview_item_option"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textIsSelectable="false" />
+
+</com.droibit.appsmanager.view.CheckedRelativeLayout>

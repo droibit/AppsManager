@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Apps Manager</string>
+    <string name="app_settings">設定</string>
+    <string name="actionbar_uninstall">アンインストール</string>
+    <string name="actionbar_share">アプリの共有</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <!-- メニュー -->
+    <string name="action_settings">設定</string>
+    <string name="action_search">検索</string>
+    <string name="action_refresh">更新</string>
+    <string name="action_sort">ソート</string>
+    <string name="action_view_as_list">リスト表示</string>
+    <string name="action_view_as_grid">グリッド表示</string>
+    <string name="action_share">共有</string>
+    <string name="action_uninstall">アンインストール</string>
+
+    <!-- アクションモードのタイトル -->
+    <string name="title_actionmode">アプリの選択</string>
+    <string name="actionmode_selected_count">%1$d アプリ</string>
+
+    <!-- ダイアログのタイトル -->
+    <string name="title_dialog_sort">並び順の変更</string>
+    <string name="title_dialog_beam">共有アプリの選択</string>
+
+    <!-- プレファレンス -->
+    <string name="pref_category_contact">コンタクト</string>
+    <string name="pref_contact_title">意見・要望を送る</string>
+    <!-- メール -->
+    <string name="mail_subject">Apps Manager  意見・要望</string>
+
+    <!-- Misc -->
+    <string name="empty_text_apps">アプリはありません</string>
+
+</resources>

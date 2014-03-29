@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/list_padding"
+    android:columnWidth="@dimen/list_icon_size"
+    android:drawSelectorOnTop="false"
+    android:gravity="center"
+    android:horizontalSpacing="@dimen/grid_spacing_horizontal"
+    android:verticalSpacing="@dimen/grid_spacing_vertical"
+    android:numColumns="@integer/num_of_grid_columns"
+    android:fastScrollEnabled="true"
+    android:stretchMode="columnWidth" />

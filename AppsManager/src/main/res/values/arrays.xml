@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="nav_items">
+        <item>@string/actionbar_uninstall</item>
+        <item>@string/actionbar_share</item>
+    </array>
+
+    <string-array name="sort_types">
+        <item>Name Asc</item>
+        <item>Name Desc</item>
+        <item>Date Asc</item>
+        <item>Date Desc</item>
+        <item>Size Asc</item>
+        <item>Size Desc</item>
+    </string-array>
+
+    <string-array name="sort_short_types">
+        <item>Name Asc</item>
+        <item>Name Desc</item>
+    </string-array>
+</resources>
