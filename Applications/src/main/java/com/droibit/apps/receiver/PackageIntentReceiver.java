@@ -13,17 +13,13 @@ import android.support.v4.content.AsyncTaskLoader;
 public class PackageIntentReceiver extends BroadcastReceiver {
 	private final AsyncTaskLoader<?> loader;
 
-	/**
-	 * 
-	 * @param loader
-	 */
 	public PackageIntentReceiver(AsyncTaskLoader<?> loader) {
 		this.loader = loader;
 
 		final IntentFilter filter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
 		filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
 		filter.addAction(Intent.ACTION_PACKAGE_CHANGED);
-		filter.addDataScheme("pm");
+		filter.addDataScheme("package");
 		loader.getContext().registerReceiver(this, filter);
 
 		// Register for events related to sdcard installation.

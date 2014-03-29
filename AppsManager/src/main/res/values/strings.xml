@@ -27,17 +27,17 @@
 
     <!-- ダイアログのタイトル -->
     <string name="title_dialog_sort">Sort Apps</string>
-    <string name="title_dialog_beam">Select share apps</string>
+    <string name="title_dialog_beam">Select apps</string>
 
     <!-- プレファレンス -->
-    <string name="pref_category_contact">Contact</string>
+    <string name="pref_category_app">Application</string>
     <string name="pref_contact_title">Send requests and comments</string>
     <!-- メール -->
     <string name="mail_address">Kumagai.Shinya@gmail.com</string>
     <string name="mail_subject">Apps Manager requests and comments</string>
 
     <!-- View -->
-    <string name="display_version_format">version : %1s</string>
+    <string name="display_version_format">ver : %1s</string>
 
     <!-- Misc -->
     <string name="empty_text_apps">No apps</string>

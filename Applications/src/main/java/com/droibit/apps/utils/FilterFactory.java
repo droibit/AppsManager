@@ -37,7 +37,7 @@ public class FilterFactory {
 	/**
 	 * 全てのアプリケーションを取得するためのフィルタ
      *
-	 * @author kumagaishinya
+	 * @author kumagai
 	 *
 	 */
 	public static class AllApplicationFilter implements IFilterable {
@@ -52,7 +52,7 @@ public class FilterFactory {
 	 * システムにインストールされているアプリケーションのみ取得するためのフィルタ
      *
      *
-	 * @author kumagaishinya
+	 * @author kumagai
 	 *
 	 */
 	public static class SystemApplicationFilter implements IFilterable {
@@ -66,7 +66,7 @@ public class FilterFactory {
 	/**
 	 * ダウンロードされたアプリケーションのみ取得するためのフィルタ
      *
-	 * @author kumagaishinya
+	 * @author kumagai
 	 *
 	 */
 	public static class DownloadedApplicationFilter implements IFilterable {
@@ -81,7 +81,7 @@ public class FilterFactory {
 	/**
 	 * SDカードにインストールされているアプリケーションのみ取得するためのフィルタ
      *
-	 * @author kumagaishinya
+	 * @author kumagai
 	 *
 	 */
 	public static class OnSdcardApplicationFilter implements IFilterable {

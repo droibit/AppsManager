@@ -35,28 +35,15 @@ public class AppliationLoader extends AsyncTaskLoader<List<AppEntry>> {
 	private List<AppEntry> apps;
 	private PackageIntentReceiver packageObserver;
 
-	/**
-	 *
-	 * @param context
-	 */
+
 	public AppliationLoader(Context context) {
 		this(context, Applications.DOWNLOADED);
 	}
 
-	/**
-	 *
-	 * @param context
-	 * @param appType
-	 */
 	public AppliationLoader(Context context, Applications appType) {
 		this(context, appType, SortTypes.NAME_ASC);
 	}
 
-	/**
-	 *
-	 * @param context
-	 * @param appType
-	 */
 	public AppliationLoader(Context context, Applications appType, SortTypes sortType) {
 		super(context);
 

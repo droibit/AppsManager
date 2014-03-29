@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/pref_category_contact" >
+    <PreferenceCategory android:title="@string/pref_category_app" >
         <Preference
             android:key="@string/pref_contact_title"
             android:title="@string/pref_contact_title" />

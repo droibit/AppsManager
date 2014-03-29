@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.droibit.appsmanager.view.CheckedRelativeLayout
+<com.droibit.appsmanager2.view.CheckedRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingTop="@dimen/list_item_padding_top" >
+    android:paddingTop="@dimen/list_item_padding_top"
+    android:paddingBottom="@dimen/list_item_padding_top" >
 
     <ImageView
         android:id="@+id/app_icon"
@@ -35,6 +36,7 @@
         android:layout_alignBottom="@id/app_icon"
         android:layout_alignLeft="@id/app_label"
         android:layout_below="@id/app_label"
+        android:layout_alignBaseline="@id/app_icon"
         android:layout_marginTop="5dp"
         android:textColor="@color/listview_item_option"
         android:singleLine="true"
@@ -54,4 +56,4 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textIsSelectable="false" />
 
-</com.droibit.appsmanager.view.CheckedRelativeLayout>
+</com.droibit.appsmanager2.view.CheckedRelativeLayout>

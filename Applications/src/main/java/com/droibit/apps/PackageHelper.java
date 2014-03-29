@@ -19,12 +19,7 @@ import android.text.TextUtils;
  */
 public final class PackageHelper {
 
-	@SuppressWarnings("unused")
-	private static final String TAG = PackageManager.class.getSimpleName();
 
-	/**
-	 * コンストラクタ
-	 */
 	private PackageHelper() {
 	}
 
