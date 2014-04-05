@@ -1,4 +1,7 @@
 <resources>
     <dimen name="navigation_drawer_width">320dp</dimen>
     <dimen name="grid_item_icon_size">64dp</dimen>
+
+    <dimen name="list_item_label_option_padding_top">10dp</dimen>
+    <dimen name="grid_item_label_size">12.5sp</dimen>
 </resources>
