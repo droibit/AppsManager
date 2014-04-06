@@ -8,7 +8,6 @@
     android:paddingBottom="@dimen/list_item_padding_top" >
 
     <ImageView
-        android:src="@drawable/ic_action_discard"
         android:id="@+id/app_icon"
         android:layout_width="@dimen/grid_item_icon_size"
         android:layout_height="@dimen/grid_item_icon_size"
@@ -19,27 +18,23 @@
         android:scaleType="centerInside" />
 
     <TextView
-        android:text="aaaaaaaaaaaaaa"
         android:id="@+id/app_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/app_icon"
+        android:layout_alignTop="@id/app_icon"
         android:ellipsize="end"
         android:singleLine="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textIsSelectable="false" />
 
     <TextView
-        android:text="aaaaaaaaaa"
         android:id="@+id/app_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/app_icon"
         android:layout_alignLeft="@id/app_label"
         android:layout_below="@id/app_label"
-        android:layout_alignBaseline="@id/app_icon"
         android:layout_marginTop="@dimen/list_item_label_option_padding_top"
         android:textColor="@color/listview_item_option"
         android:singleLine="true"
@@ -51,7 +46,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_label"
-        android:layout_alignBottom="@id/app_icon"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/list_item_label_option_padding_top"
         android:paddingRight="5dp"
