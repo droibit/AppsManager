@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.Loader;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.ActionMode;
@@ -65,14 +66,14 @@ public class UninstallMenu extends FragmentMenu implements SearchView.OnQueryTex
         final SearchView searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(this);
 
-        item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+        MenuItemCompat.setOnActionExpandListener(item, new MenuItemCompat.OnActionExpandListener() {
             @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
                 return true;
             }
 
             @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                 // ビューを閉じる際にアダプタのフィルタをクリアしておく
                 searchView.setQuery(Strings.EMPTY, false);
                 return true;
