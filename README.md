@@ -1,4 +1,11 @@
-# License
+## Apps Manager
+不要になったアプリ、共有したいアプリを簡単＆素早く管理することができます。
+また、NFCを搭載している端末同士なら、アプリを選択し、かざすだけで共有できます。
+
+### Download
+[Apps Manager : GooglePlay](https://play.google.com/store/apps/details?id=com.droibit.appsmanager2)
+
+## License
 
     Copyright 2014 droibit
 

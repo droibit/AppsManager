@@ -174,7 +174,6 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerLayout = drawerLayout;
 
         // set a custom shadow that overlays the menu_list_unintall content when the drawer opens
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
 
         final ActionBar actionBar = getActionBar();
