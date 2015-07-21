@@ -33,9 +33,9 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
     /** {@link LoaderManager.LoaderCallbacks}のID */
     public static final int ID = 1;
 
-    private final Fragment targetFragmet;
+    private final Fragment targetFragment;
     private final OnLoadListener listener;
-    private AbsListView listViiew;
+    private AbsListView listView;
     private AppArrayAdapter listAdapter;
     private ScrolledListHolder scrollHolder;
 
@@ -45,7 +45,7 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
      * @param fragment 保持するフラグメント
      */
     public AppListLoaderCallbacks(Fragment fragment) {
-        targetFragmet = fragment;
+        targetFragment = fragment;
         listener = (OnLoadListener) fragment;
         scrollHolder = new ScrolledListHolder();
     }
@@ -57,12 +57,12 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
 
         // 一覧更新後もスクロール位置を復元できるようにする
         if (args.getBoolean(ARGS_UPDATED)) {
-            scrollHolder.save(listViiew);
+            scrollHolder.save(listView);
             args.putBoolean(ARGS_UPDATED, false);
         }
         // アプリケーションのロード中かどうか↓のフラグで判定するために使用
         args.putBoolean(ARG_PROGRESS, true);
-        return new AppliationLoader(targetFragmet.getActivity());
+        return new AppliationLoader(targetFragment.getActivity());
     }
 
     /** {@inheritDoc} */
@@ -75,7 +75,7 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
         listAdapter.sort(SorterFactory.get(sortType));
 
         if (NullCheck.isNotNull(scrollHolder)) {
-            scrollHolder.restore(listViiew);
+            scrollHolder.restore(listView);
         }
         listener.onPostLoad();
     }
@@ -102,7 +102,7 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
      * @param listView {@link AbsListView}オブジェクト
      */
     public void setListView(AbsListView listView) {
-        this.listViiew = listView;
+        this.listView = listView;
         this.listAdapter = (AppArrayAdapter)listView.getAdapter();
     }
 
@@ -125,6 +125,6 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
     }
 
     private Bundle getArguments() {
-        return targetFragmet.getArguments();
+        return targetFragment.getArguments();
     }
 }

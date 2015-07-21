@@ -1,7 +1,5 @@
 package com.droibit.appsmanager2;
 
-import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;

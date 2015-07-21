@@ -16,7 +16,7 @@ import com.droibit.appsmanager2.fragment.NavigationDrawerFragment;
 import com.droibit.appsmanager2.fragment.ShareListFragment;
 import com.droibit.appsmanager2.fragment.UninstallListFragment;
 import com.droibit.appsmanager2.model.utils.NfcManager;
-import com.droibit.appsmanager2.model.utils.OnNfcRegistListener;
+import com.droibit.appsmanager2.model.utils.OnNfcRegisterListener;
 import com.droibit.nfc.NfcHandler;
 
 /**
@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity
     public static final String ARGS_UPDATED = "updated";
     public static final String ARG_SECTION_NUMBER = "section_number";
 
-    private OnNfcRegistListener nfcRegistListener;
+    private OnNfcRegisterListener nfcRegisterListener;
     private NfcManager.INdefMessageDelegate ndefMessageDelegate;
 
     /**
@@ -53,9 +53,9 @@ public class MainActivity extends ActionBarActivity
 
         // #setContentView より先にインスタンスを作成しないと#onNavigationDrawerItemSelected でヌルポ発生
         if (NfcHandler.isEnableNfc(this)) {
-            nfcRegistListener = new NfcManager(this);
+            nfcRegisterListener = new NfcManager(this);
         } else {
-            nfcRegistListener = new NfcManager.NullObject();
+            nfcRegisterListener = new NfcManager.NullObject();
         }
 
         setContentView(R.layout.activity_main);
@@ -103,7 +103,7 @@ public class MainActivity extends ActionBarActivity
                 .commit();
 
         // NFCイベントハンドルの有無を切り替える（共有時のみ有効）
-        nfcRegistListener.onToggle(position == 1);
+        nfcRegisterListener.onToggle(position == 1);
     }
 
     /** {@inheritDoc} */

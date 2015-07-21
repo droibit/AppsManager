@@ -66,7 +66,7 @@ public class AppliationLoader extends AsyncTaskLoader<List<AppEntry>> {
 		// Retrieve all known applications.
 		List<ApplicationInfo> apps = packageManager.getInstalledApplications(flags);
 		if (apps == null) {
-			apps = new ArrayList<ApplicationInfo>();
+			apps = new ArrayList<>();
 		}
 
 		final Context context = getContext();

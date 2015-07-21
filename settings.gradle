@@ -1,1 +1,1 @@
-include ':AppsManager', ':Applications'
+include ':app', ':library'

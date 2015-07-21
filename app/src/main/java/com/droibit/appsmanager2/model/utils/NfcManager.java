@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
  * @author kumagai
  * @since 2014/03/29.
  */
-public class NfcManager implements OnNfcRegistListener {
+public class NfcManager implements OnNfcRegisterListener {
 
     /**
      * {@link android.nfc.NdefMessage}の作成を以上するためのインターフェース
@@ -102,7 +102,7 @@ public class NfcManager implements OnNfcRegistListener {
     /**
      * NULLオブジェクト。NFCに対応していない場合はこのクラスを使用する
      */
-    public static final class NullObject implements OnNfcRegistListener {
+    public static final class NullObject implements OnNfcRegisterListener {
         @Override
         public void onToggle(boolean toggle) {
 
