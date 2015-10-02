@@ -12,7 +12,6 @@ import com.droibit.appsmanager2.R;
  * このビューホルダーはアプリをアンインストール際に使用する。
  *
  * @author kumagai
- * @since 2014/03/27.
  */
 public class UninstallableListItemViewHolder {
 

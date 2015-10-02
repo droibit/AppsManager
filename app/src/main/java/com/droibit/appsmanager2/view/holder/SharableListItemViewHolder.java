@@ -13,7 +13,6 @@ import com.droibit.appsmanager2.R;
  * このビューホルダーはアプリを共有する際に使用する。
  *
  * @author kumagai
- * @since 2014/03/27.
  */
 public class SharableListItemViewHolder {
 

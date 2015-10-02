@@ -10,9 +10,9 @@ import android.graphics.drawable.Drawable;
  * アプリケーション名とアイコンを格納するクラス
  *
  * @author kumagai
- * 
  */
 public class AppSnippet {
+
     /** アプリケーション名 */
 	public String name;
 
@@ -49,9 +49,7 @@ public class AppSnippet {
 			this.icon = context.getPackageManager()
 					.getResourcesForApplication(appInfo)
                     .getDrawable(appInfo.icon);
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		} catch (NameNotFoundException e) {
+		} catch (NotFoundException | NameNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

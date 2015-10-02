@@ -12,7 +12,6 @@ import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
  * フラグメントにPull to refreshを設定するためのユーティリティクラス
  *
  * @author kumagai
- * @since 2014/03/29.
  */
 public final class PullToRefresh {
 
@@ -26,7 +25,7 @@ public final class PullToRefresh {
          *
          * @return {@link AbsListView}オブジェクト
          */
-        public AbsListView getAbsListView();
+        AbsListView getAbsListView();
     }
 
     /**
@@ -38,7 +37,6 @@ public final class PullToRefresh {
      */
     public static PullToRefreshLayout setup(Fragment targetFragment, ViewGroup parentGroup) {
         final OnAbsListViewListener listener = (OnAbsListViewListener) targetFragment;
-        final AbsListView listView = listener.getAbsListView();
         final PullToRefreshLayout refreshLayout = new PullToRefreshLayout(parentGroup.getContext());
 
         ActionBarPullToRefresh.from(targetFragment.getActivity())

@@ -56,8 +56,7 @@ public class AppEntry {
 		this.appInfo = appInfo;
 		this.apkFile = new File(appInfo.sourceDir);
 		this.appSnippet = new AppSnippet();
-		this.lastUpdateTime = PackageHelper.getLastUpdateTime(context,
-				appInfo.packageName);
+		this.lastUpdateTime = PackageHelper.getLastUpdateTime(context, appInfo.packageName);
 		this.appSizeInBytes = apkFile.length();
 	}
 

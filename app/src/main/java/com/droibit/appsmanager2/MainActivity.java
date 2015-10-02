@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.droibit.apps.Applications;
@@ -23,9 +24,8 @@ import com.droibit.nfc.NfcHandler;
  * アプリケーション一覧を表示するためのメインアクティビティ
  *
  * @author kumagai
- * @since 2014/03/27
  */
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
             NfcHandler.OnNfcEventListener, NfcManager.NdefMessageDelegateCallback {
 
@@ -108,7 +108,7 @@ public class MainActivity extends ActionBarActivity
 
     /** {@inheritDoc} */
     @Override
-    public void reciveNdefMessageDelegate(NfcManager.INdefMessageDelegate delegate) {
+    public void receiveNdefMessageDelegate(NfcManager.INdefMessageDelegate delegate) {
         ndefMessageDelegate = delegate;
     }
 

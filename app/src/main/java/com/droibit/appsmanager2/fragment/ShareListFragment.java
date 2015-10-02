@@ -79,13 +79,14 @@ public class ShareListFragment extends FlexibleListFragment
 
     /** {@inheritDoc} */
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        ((MainActivity) context).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
 
-        ((NfcManager.NdefMessageDelegateCallback) activity)
-                .reciveNdefMessageDelegate(this);
+        ((NfcManager.NdefMessageDelegateCallback) context)
+                .receiveNdefMessageDelegate(null);
     }
 
     /** {@inheritDoc} */

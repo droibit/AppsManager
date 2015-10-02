@@ -19,7 +19,6 @@ import com.droibit.utils.Debug;
  * AndroidBeam(NFC)でアプリケーション情報を受け取った際に表示するアクティビティ
  *
  * @author kumagai
- * 
  */
 public class BeamActivity extends ListActivity {
 
@@ -85,25 +84,25 @@ public class BeamActivity extends ListActivity {
 	
 	/** {@inheritDoc} */
     protected void onListItemClick(ListView l, View v, int position, long id) {
-    		final ListItem item = (ListItem) getListAdapter().getItem(position);
-    		IntentHepler.sendGooglePlay(this, item.packageName);
+		final ListItem item = (ListItem) getListAdapter().getItem(position);
+		IntentHepler.sendGooglePlay(this, item.packageName);
     }
 
     /**
      * NFCで受け取ったアプリ情報を格納するクラス
      */
     private class ListItem {
-    		String appName;
-    		String packageName;
-    		
-    		public ListItem(String[] appInfo) {
-    			this.appName = appInfo[0];
-    			this.packageName = appInfo[1];
-    		}
-    		
-    		@Override
-    		public String toString() {
-    			return appName;
-    		}
+		String appName;
+		String packageName;
+
+		public ListItem(String[] appInfo) {
+			this.appName = appInfo[0];
+			this.packageName = appInfo[1];
+		}
+
+		@Override
+		public String toString() {
+			return appName;
+		}
     }
 }

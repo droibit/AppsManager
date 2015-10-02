@@ -11,7 +11,6 @@ import com.droibit.appsmanager2.R;
  * アプリケーションをグリッド表示するためのビューを格納するクラス
  *
  * @author kumagai
- * @since 2014/03/27.
  */
 public class CommonGridItemViewHolder {
 

@@ -25,7 +25,7 @@ public enum Applications {
 	 * 
 	 * @param index 列挙子のインデックス
 	 */
-	private Applications(int index) {
+	Applications(int index) {
 		this.index = index;
 	}
 

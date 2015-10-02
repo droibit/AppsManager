@@ -18,5 +18,5 @@ public interface IFilterable {
 	 * @param appInfo アプリケーションの情報
 	 * @return trueの場合はアプリケーションをフィルタリングする、falseの場合はしない
 	 */
-	public boolean filter(ApplicationInfo appInfo);
+	boolean filter(ApplicationInfo appInfo);
 }

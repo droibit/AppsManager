@@ -33,7 +33,6 @@ import static com.droibit.appsmanager2.MainActivity.ARG_SECTION_NUMBER;
  * アプリケーションのアンインストールフラグメントのメニューをハンドルするためのクラス
  *
  * @author kumagai
- * @since 2014/03/28.
  */
 public class UninstallMenu extends FragmentMenu implements SearchView.OnQueryTextListener {
 
@@ -51,11 +50,11 @@ public class UninstallMenu extends FragmentMenu implements SearchView.OnQueryTex
     /**
      * 新しいインスタンスを作成する
      *
-     * @param targetFragemt メニューを保持するフラグメント
+     * @param targetFragmet メニューを保持するフラグメント
      * @param loaderCallbacks {@link Loader}のコールバック
      */
-    public UninstallMenu(Fragment targetFragemt, AppListLoaderCallbacks loaderCallbacks) {
-        this.targetFragemnt = targetFragemt;
+    public UninstallMenu(Fragment targetFragmet, AppListLoaderCallbacks loaderCallbacks) {
+        this.targetFragemnt = targetFragmet;
         this.loaderCallbacks = loaderCallbacks;
     }
 

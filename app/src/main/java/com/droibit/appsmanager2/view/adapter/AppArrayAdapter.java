@@ -11,7 +11,6 @@ import java.util.List;
  * {@link AppEntry}をビューで表示するための基底アダプタ
  *
  * @author kumagai
- * @since 2014/03/28.
  */
 public class AppArrayAdapter extends ArrayAdapter<AppEntry> {
 

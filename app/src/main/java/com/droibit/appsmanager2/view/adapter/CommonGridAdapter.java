@@ -13,7 +13,7 @@ import com.droibit.utils.NullCheck;
  * アプリケーションをグリッド表示するためのアダプタ。<br>
  * このアダプタはアプリをアンインストール際に使用する。
  *
- * @since 2014/03/28.
+ * @author kumagai
  */
 public class CommonGridAdapter extends AppArrayAdapter {
 

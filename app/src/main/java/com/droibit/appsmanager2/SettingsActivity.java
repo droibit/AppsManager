@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.droibit.content.IntentHepler;
@@ -13,9 +14,8 @@ import com.droibit.content.IntentMailObject;
  * アプリケーションの設定を表示するアクティビティ
  *
  * @author kumagai
- * @since 2014/03/27.
  */
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     /** {@inheritDoc} */
     @Override

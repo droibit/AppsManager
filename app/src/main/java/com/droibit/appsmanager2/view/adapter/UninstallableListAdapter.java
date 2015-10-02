@@ -14,7 +14,6 @@ import com.droibit.utils.NullCheck;
  * このアダプタはアプリをアンインストール際に使用する。
  *
  * @author kumagai
- * @since 2014/03/27.
  */
 public class UninstallableListAdapter extends AppArrayAdapter {
 

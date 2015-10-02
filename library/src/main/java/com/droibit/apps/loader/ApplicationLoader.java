@@ -26,7 +26,7 @@ import static android.content.pm.PackageManager.GET_UNINSTALLED_PACKAGES;
 /**
  * A custom Loader that loads all of the installed applications.
  */
-public class AppliationLoader extends AsyncTaskLoader<List<AppEntry>> {
+public class ApplicationLoader extends AsyncTaskLoader<List<AppEntry>> {
 
 	private final InterestingConfigChanges lastConfig;
 	private final PackageManager packageManager;
@@ -36,15 +36,15 @@ public class AppliationLoader extends AsyncTaskLoader<List<AppEntry>> {
 	private PackageIntentReceiver packageObserver;
 
 
-	public AppliationLoader(Context context) {
+	public ApplicationLoader(Context context) {
 		this(context, Applications.DOWNLOADED);
 	}
 
-	public AppliationLoader(Context context, Applications appType) {
+	public ApplicationLoader(Context context, Applications appType) {
 		this(context, appType, SortTypes.NAME_ASC);
 	}
 
-	public AppliationLoader(Context context, Applications appType, SortTypes sortType) {
+	public ApplicationLoader(Context context, Applications appType, SortTypes sortType) {
 		super(context);
 
 		// Retrieve the pm manager for later use; note we don't

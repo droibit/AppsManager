@@ -6,7 +6,6 @@ package com.droibit.apps.utils;
  * 名前、更新日、サイズ、キャッシュでソートが可能。
  * 
  * @author kumagai
- *
  */
 public enum SortTypes {
 	

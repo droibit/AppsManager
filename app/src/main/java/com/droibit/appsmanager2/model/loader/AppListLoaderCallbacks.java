@@ -7,7 +7,7 @@ import android.support.v4.content.Loader;
 import android.widget.AbsListView;
 
 import com.droibit.apps.AppEntry;
-import com.droibit.apps.loader.AppliationLoader;
+import com.droibit.apps.loader.ApplicationLoader;
 import com.droibit.apps.utils.SortTypes;
 import com.droibit.apps.utils.SorterFactory;
 import com.droibit.appsmanager2.view.adapter.AppArrayAdapter;
@@ -62,7 +62,7 @@ public class AppListLoaderCallbacks implements LoaderManager.LoaderCallbacks<Lis
         }
         // アプリケーションのロード中かどうか↓のフラグで判定するために使用
         args.putBoolean(ARG_PROGRESS, true);
-        return new AppliationLoader(targetFragment.getActivity());
+        return new ApplicationLoader(targetFragment.getActivity());
     }
 
     /** {@inheritDoc} */

@@ -19,7 +19,6 @@ import static com.droibit.appsmanager2.MainActivity.ARGS_UPDATED;
  * フラグメントのメニューイベントをハンドルするための抽象クラス
  *
  * @author kumagai
- * @since 2014/03/28.
  */
 public abstract class FragmentMenu implements AbsListView.MultiChoiceModeListener {
 

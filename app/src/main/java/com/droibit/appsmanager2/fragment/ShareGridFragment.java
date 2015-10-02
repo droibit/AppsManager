@@ -49,7 +49,6 @@ import static com.droibit.widget.ScrolledListHolder.KEY_SCROLL_HOLDER;
  * アプリケーションをグリッド表示するので、複数選択しやすくなる。
  *
  * @author kumagai
- * @since 2014/03/28.
  */
 public class ShareGridFragment extends FlexibleGridFragment
         implements OnLoadListener, OnClickItemListener,
@@ -79,13 +78,14 @@ public class ShareGridFragment extends FlexibleGridFragment
 
     /** {@inheritDoc} */
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        ((MainActivity) context).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
 
-        ((NfcManager.NdefMessageDelegateCallback) activity)
-                .reciveNdefMessageDelegate(this);
+        ((NfcManager.NdefMessageDelegateCallback) context)
+                .receiveNdefMessageDelegate(null);
     }
 
     /** {@inheritDoc} */

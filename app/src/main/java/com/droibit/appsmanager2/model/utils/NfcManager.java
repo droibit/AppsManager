@@ -20,7 +20,7 @@ public class NfcManager implements OnNfcRegisterListener {
     /**
      * {@link android.nfc.NdefMessage}の作成を以上するためのインターフェース
      */
-    public static interface INdefMessageDelegate {
+    public interface INdefMessageDelegate {
 
         /**
          * NFCで送信するための{@link NdefMessage}を作成する
@@ -33,14 +33,14 @@ public class NfcManager implements OnNfcRegisterListener {
     /**
      * {@link INdefMessageDelegate}を受け取るためのコールバックインターフェース
      */
-    public static interface NdefMessageDelegateCallback {
+    public interface NdefMessageDelegateCallback {
 
         /**
          * {@link INdefMessageDelegate}を保持する
          *
          * @param delegate {@link INdefMessageDelegate}オブジェクト
          */
-        void reciveNdefMessageDelegate(INdefMessageDelegate delegate);
+        void receiveNdefMessageDelegate(INdefMessageDelegate delegate);
     }
 
     private static final String LOCAL_EN = "en";

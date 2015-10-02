@@ -9,7 +9,6 @@ import java.util.Comparator;
  * アプリケーションをソートするための{@link Comparator}を作成するファクトリ
  *
  * @author kumagai
- *
  */
 public class SorterFactory {
 

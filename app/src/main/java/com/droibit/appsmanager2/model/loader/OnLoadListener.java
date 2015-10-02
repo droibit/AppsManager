@@ -4,7 +4,6 @@ package com.droibit.appsmanager2.model.loader;
  * {@link com.droibit.appsmanager2.model.loader.AppListLoaderCallbacks}内でロード開始と終了時に呼ばれるイベントリスナ
  *
  * @author kumagai
- * @since 2014/03/28.
  */
 public interface OnLoadListener {
 
