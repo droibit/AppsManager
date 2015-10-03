@@ -1,8 +1,8 @@
 package com.droibit.appsmanager2.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,17 +23,13 @@ import com.droibit.appsmanager2.model.loader.OnLoadListener;
 import com.droibit.appsmanager2.model.menu.FragmentMenu;
 import com.droibit.appsmanager2.model.menu.UninstallMenu;
 import com.droibit.appsmanager2.model.utils.NfcManager;
-import com.droibit.appsmanager2.model.utils.PullToRefresh;
-import com.droibit.appsmanager2.model.utils.PullToRefresh.OnAbsListViewListener;
+import com.droibit.appsmanager2.view.ListFragmentSwipeRefreshLayout;
 import com.droibit.appsmanager2.view.adapter.AppArrayAdapter;
 import com.droibit.appsmanager2.view.adapter.UninstallableListAdapter;
 import com.droibit.content.IntentHepler;
 import com.droibit.utils.NullCheck;
 import com.droibit.view.OnClickItemListener;
 import com.droibit.widget.ScrolledListHolder;
-
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 import static com.droibit.appsmanager2.MainActivity.ARGS_SORT_TYPE;
 import static com.droibit.appsmanager2.MainActivity.ARG_SECTION_NUMBER;
@@ -48,13 +44,15 @@ import static com.droibit.widget.ScrolledListHolder.KEY_SCROLL_HOLDER;
  * @since 2014/03/28
  */
 public class UninstallListFragment extends FlexibleListFragment
-        implements OnLoadListener, OnClickItemListener, OnAbsListViewListener, OnRefreshListener {
+        implements OnLoadListener, OnClickItemListener,
+                    SwipeRefreshLayout.OnRefreshListener,
+                    ListFragmentSwipeRefreshLayout.Adapter {
 
     private FragmentMenu actionMenu;
     private AppListLoaderCallbacks loaderCallbacks;
-    private PullToRefreshLayout mPullToRefreshLayout;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
-	/**
+    /**
 	 * 新しいインスタンスを作成する
      *
 	 * @param appType 表示するアプリケーションの種類
@@ -64,7 +62,7 @@ public class UninstallListFragment extends FlexibleListFragment
 	public static UninstallListFragment newInstance(Applications appType, int sectionNumber) {
 		final UninstallListFragment fragment = new UninstallListFragment();
 		final Bundle args = new Bundle();
-		args.putSerializable(ARGS_SORT_TYPE, SortTypes.NAME_ASC);
+        args.putSerializable(ARGS_SORT_TYPE, SortTypes.NAME_ASC);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
 
 		fragment.setArguments(args);
@@ -94,6 +92,46 @@ public class UninstallListFragment extends FlexibleListFragment
     }
 
     /** {@inheritDoc} */
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        // Create the list fragment's content view by calling the super method
+        final View listFragmentView = super.onCreateView(inflater, container, savedInstanceState);
+
+        // Now create a SwipeRefreshLayout to wrap the fragment's content view
+        mSwipeRefreshLayout = new ListFragmentSwipeRefreshLayout(container.getContext(), this);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        // Add the list fragment's content view to the SwipeRefreshLayout, making sure that it fills
+        // the SwipeRefreshLayout
+        mSwipeRefreshLayout.addView(listFragmentView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        // Make sure that the SwipeRefreshLayout will fill the fragment
+        mSwipeRefreshLayout.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+
+        // Now return the SwipeRefreshLayout as this fragment's content view
+        return mSwipeRefreshLayout;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final AppArrayAdapter listAdapter = new UninstallableListAdapter(getContext());
+        setListAdapter(listAdapter);
+        loaderCallbacks.setListView(getListView());
+        actionMenu.setListView(getListView());
+
+        setEmptyText(getText(R.string.empty_text_apps));
+    }
+
+    /** {@inheritDoc} */
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         final MainActivity activity = (MainActivity) getActivity();
@@ -109,21 +147,6 @@ public class UninstallListFragment extends FlexibleListFragment
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return actionMenu.onOptionsItemSelected(item);
 	}
-
-    /** {@inheritDoc} */
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        final AppArrayAdapter listAdapter = new UninstallableListAdapter(getActivity());
-        setListAdapter(listAdapter);
-        loaderCallbacks.setListView(getListView());
-        actionMenu.setListView(getListView());
-
-        setEmptyText(getText(R.string.empty_text_apps));
-
-        mPullToRefreshLayout = PullToRefresh.setup(this, (ViewGroup) view);
-    }
 
 	/** {@inheritDoc} */
 	@Override
@@ -149,7 +172,7 @@ public class UninstallListFragment extends FlexibleListFragment
 		super.onSaveInstanceState(outState);
 
 		outState.putParcelable(KEY_SCROLL_HOLDER, new ScrolledListHolder(
-				getListView()));
+                getListView()));
 	}
 
     /** {@inheritDoc} */
@@ -175,8 +198,8 @@ public class UninstallListFragment extends FlexibleListFragment
     /** {@inheritDoc} */
     @Override
     public void onPostLoad() {
-        if (mPullToRefreshLayout.isRefreshing()) {
-            mPullToRefreshLayout.setRefreshComplete();
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
         }
 
         if (isResumed()) {
@@ -201,7 +224,7 @@ public class UninstallListFragment extends FlexibleListFragment
 
     /** {@inheritDoc} */
     @Override
-    public void onRefreshStarted(View view) {
+    public void onRefresh() {
         actionMenu.onRefreshApplications();
     }
 }

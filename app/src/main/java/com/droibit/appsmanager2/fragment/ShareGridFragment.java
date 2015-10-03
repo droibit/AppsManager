@@ -1,10 +1,10 @@
 package com.droibit.appsmanager2.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,8 +25,7 @@ import com.droibit.appsmanager2.model.loader.OnLoadListener;
 import com.droibit.appsmanager2.model.menu.FragmentMenu;
 import com.droibit.appsmanager2.model.menu.ShareMenu;
 import com.droibit.appsmanager2.model.utils.NfcManager;
-import com.droibit.appsmanager2.model.utils.PullToRefresh;
-import com.droibit.appsmanager2.model.utils.PullToRefresh.OnAbsListViewListener;
+import com.droibit.appsmanager2.view.ListFragmentSwipeRefreshLayout;
 import com.droibit.appsmanager2.view.adapter.AppArrayAdapter;
 import com.droibit.appsmanager2.view.adapter.CommonGridAdapter;
 import com.droibit.utils.NullCheck;
@@ -36,9 +35,6 @@ import com.droibit.widget.ScrolledListHolder;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 import static com.droibit.appsmanager2.MainActivity.ARGS_SORT_TYPE;
 import static com.droibit.appsmanager2.MainActivity.ARG_SECTION_NUMBER;
@@ -52,11 +48,13 @@ import static com.droibit.widget.ScrolledListHolder.KEY_SCROLL_HOLDER;
  */
 public class ShareGridFragment extends FlexibleGridFragment
         implements OnLoadListener, OnClickItemListener,
-            OnAbsListViewListener, OnRefreshListener, NfcManager.INdefMessageDelegate {
+        SwipeRefreshLayout.OnRefreshListener,
+        ListFragmentSwipeRefreshLayout.Adapter,
+        NfcManager.INdefMessageDelegate {
 
     private FragmentMenu actionMenu;
     private AppListLoaderCallbacks loaderCallbacks;
-    private PullToRefreshLayout mPullToRefreshLayout;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /**
      * 新しいインスタンスを作成する
@@ -117,6 +115,33 @@ public class ShareGridFragment extends FlexibleGridFragment
 
     /** {@inheritDoc} */
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        // Create the list fragment's content view by calling the super method
+        final View listFragmentView = super.onCreateView(inflater, container, savedInstanceState);
+
+        // Now create a SwipeRefreshLayout to wrap the fragment's content view
+        mSwipeRefreshLayout = new ListFragmentSwipeRefreshLayout(container.getContext(), this);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        // Add the list fragment's content view to the SwipeRefreshLayout, making sure that it fills
+        // the SwipeRefreshLayout
+        mSwipeRefreshLayout.addView(listFragmentView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        // Make sure that the SwipeRefreshLayout will fill the fragment
+        mSwipeRefreshLayout.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+
+        // Now return the SwipeRefreshLayout as this fragment's content view
+        return mSwipeRefreshLayout;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -126,8 +151,6 @@ public class ShareGridFragment extends FlexibleGridFragment
         actionMenu.setListView(getGridView());
 
         setEmptyText(getText(R.string.empty_text_apps));
-
-        mPullToRefreshLayout = PullToRefresh.setup(this, (ViewGroup) view);
     }
 
     /** {@inheritDoc} */
@@ -182,8 +205,8 @@ public class ShareGridFragment extends FlexibleGridFragment
     /** {@inheritDoc} */
     @Override
     public void onPostLoad() {
-        if (mPullToRefreshLayout.isRefreshing()) {
-            mPullToRefreshLayout.setRefreshComplete();
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
         }
 
         if (isResumed()) {
@@ -208,10 +231,9 @@ public class ShareGridFragment extends FlexibleGridFragment
 
     /** {@inheritDoc} */
     @Override
-    public void onRefreshStarted(View view) {
+    public void onRefresh() {
         actionMenu.onRefreshApplications();
     }
-
     /** {@inheritDoc} */
     @Override
     public NdefMessage createNdefMessage() {
